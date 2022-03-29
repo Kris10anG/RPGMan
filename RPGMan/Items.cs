@@ -6,17 +6,14 @@ using System.Threading.Tasks;
 
 namespace RPGMan
 {
-    internal class Items
+    public class Items
     {
         public string Name { get; set; }
-        public string Rarity { get; set; } 
-        public int Quantity { get; set; }
+       
 
-        public Items(string name, string rarity, int quantity)
+        public Items(string name)
         {
             Name = name;
-            Rarity = rarity;
-            Quantity = quantity;    
         }
     }
 }

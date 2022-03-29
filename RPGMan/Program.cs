@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace RPGMan
 {
@@ -6,23 +7,35 @@ namespace RPGMan
     {
         static void Main(string[] args)
         {
+            var boss = new Boss("Linus", 300, 0, 30); // this.atk = 30
+            //var boss2 = new Boss("Linus", 300, 20, 130); // Atk = 130
+            var hero = new Hero("Kris10an", 200, 40, 30);
+
+            while (true)
+            {
+            hero.Attack(boss);
+            boss.Attack(hero);
+            }
             /*
              (BASE)Character
-                    * HP, Mana, Def, Atk, Inventory
-                    Attack(); <-- Sjekke def og kalkuler damage mtp dette.
+                    * HP, Mana, Atk, Inventory
+                    Attack(); <-- Sjekke mana og la karakteren gjøre damage mtp dette.
 
 
                 Hero : Character
-                    Rest();
+                    Rest(); //når han rester kan han ha 50 prosent sjanse for å dukke unna et angrep
 
-                Enemy : Character
-                    DropLoot();
+                Boss : Character
+                    DropLoot(); //for hver gang han mister 100Health får Hero mulighet til å plukke opp items han dropper
                 
                 Inventory
-                    * List<Item> Items
+                    * List<Item> Items ManaPotion, StrengthPotion og HealthPotion
+             * ManaPotion gir 1000Mana
+             * StrengtPotion øker styrken med 20Atk
+             * HealthPotion gir 100Health
                 
                 Item
-                    *Name, rarity, quantity
+                    *Name,  
             */
         }
     }
