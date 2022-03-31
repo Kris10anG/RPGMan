@@ -6,14 +6,20 @@ using System.Threading.Tasks;
 
 namespace RPGMan
 {
-    public class Items
+    public abstract class Item
     {
         public string Name { get; set; }
+        public int Lvl { get; set; }
        
 
-        public Items(string name)
+        protected Item(string name, int lvl)
         {
             Name = name;
+            Lvl = lvl;
+
         }
+
+        public abstract void Use(Character character);
+
     }
 }

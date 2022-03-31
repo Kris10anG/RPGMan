@@ -1,20 +1,38 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace RPGMan
 {
     internal class Program
     {
+        /* Potion:Item;
+            HealthPotion : Potion
+        */
+
+
         static void Main(string[] args)
         {
-            var boss = new Boss("Linus", 300, 0, 30); // this.atk = 30
+            var boss = new Boss("Linus", 300, 1, 30); // this.atk = 30
             //var boss2 = new Boss("Linus", 300, 20, 130); // Atk = 130
             var hero = new Hero("Kris10an", 200, 40, 30);
 
-            while (true)
+            while (hero.IsAlive && boss.IsAlive)
             {
-            hero.Attack(boss);
-            boss.Attack(hero);
+                var command = Console.ReadLine();
+                if (command == "1")
+                {
+                    hero.Attack(boss);
+                    boss.Attack(hero);
+
+                }
+                Thread.Sleep(1000);
+                if (command == "2")
+                {
+                    hero.UsePotion();
+                }
+                // 1. Attack 2. Use Item from Inventorys
             }
             /*
              (BASE)Character
@@ -29,7 +47,7 @@ namespace RPGMan
                     DropLoot(); //for hver gang han mister 100Health får Hero mulighet til å plukke opp items han dropper
                 
                 Inventory
-                    * List<Item> Items ManaPotion, StrengthPotion og HealthPotion
+                    * List<Item> Item ManaPotion, StrengthPotion og HealthPotion
              * ManaPotion gir 1000Mana
              * StrengtPotion øker styrken med 20Atk
              * HealthPotion gir 100Health

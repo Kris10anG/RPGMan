@@ -15,7 +15,7 @@ namespace RPGMan
             Health = health;
             Mana = mana;
             Atk = attack;
-            Items = new List<Items>();
+            Inventory = new List<Item>();
         }
 
         public override void Attack(Character opponent)
@@ -42,25 +42,30 @@ namespace RPGMan
             //if (drawNumber == luckyNumber)
             //{
             //    var randomItem = opponent.DropLoot();
-            //    Items.Add(randomItem);
+            //    Item.Add(randomItem);
             //    Console.WriteLine($"You're in luck, the PINATA dropped {randomItem.Name}");
             //}
         }
 
         public void RunPinata(Character opponent)
         {
-            var drawNumber = _random.Next(0, 2);
+            var drawNumber = _random.Next(opponent.Inventory.Count);
             var luckyNumber = 1;
             if (drawNumber == luckyNumber)
             {
                 var randomItem = opponent.DropLoot();
-                Items.Add(randomItem);
+                Inventory.Add(randomItem);
                 Console.WriteLine($"You're in luck, the PINATA dropped {randomItem.Name}");
             }
         }
         public void Rest()
         {
             Mana += MaxMana;
+        }
+
+        public void UsePotion()
+        {
+            Inventory[0].Use(this);
         }
     }
 }

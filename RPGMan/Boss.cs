@@ -16,12 +16,12 @@ namespace RPGMan
             Health = health;
             Mana = mana;
             Atk = attack;
-            Items = new List<Items>
+            Inventory = new List<Item>
             {
-                new("Worn leather shoe"),
-                new("Health Potion"),
-                new("Mana Potion"),
-                new("Strength Potion")
+                new HealthPotion(3),
+                new StrengthPotion(2),
+                new StrengthPotion(2),
+                new StrengthPotion(3),
             };
         }
 
@@ -31,8 +31,11 @@ namespace RPGMan
             //var maxDmg = Atk * 2;
             var baseDamage = _random.Next(15, 35); // 30 - 15, 60
             Atk = baseDamage;
-            opponent.Health -= Atk;
-            Console.WriteLine(Name + " did " + Atk + "dmg to " + opponent.Name + " and has " + Health + "Health left");
+            opponent.LoseHealth(Atk);
+            if (opponent.IsAlive)
+            {
+                Console.WriteLine(Name + " did " + Atk + "dmg to " + opponent.Name + " and has " + Health + "Health left");
+            }
         }
 
     }
