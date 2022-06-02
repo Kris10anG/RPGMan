@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace RPGMan
-{
+{   
     public class HealthPotion : Item
     {
         private int HealingEffect { get; set; }

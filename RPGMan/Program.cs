@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace RPGMan
 {
-    internal class Program
+    public class Program
     {
         /* Potion:Item;
             HealthPotion : Potion

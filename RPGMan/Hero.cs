@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGMan
 {
-    internal class Hero : Character
+    public class Hero : Character
     {
         private static Random _random = new Random();
         public Hero(string name, int health, int mana, int attack) : base(name, health, mana, attack)
@@ -26,10 +26,9 @@ namespace RPGMan
             switch (Mana)
             {
                 case >= 20:
-                    opponent.Health -= Atk;
                     Mana -= 20;
-                    Console.WriteLine(Name + " did " + Atk + "dmg to " + opponent.Name + " and has " + Health + "Health left");
                     opponent.LoseHealth(Atk);
+                    Console.WriteLine(Name + " did " + Atk + "dmg to " + opponent.Name + " and has " + Health + "Health left");
                     Console.WriteLine(Name + " has " + Mana + "Mana left!");
                     break;
                 case < 20:

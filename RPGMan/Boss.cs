@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace RPGMan
 {
-    internal class Boss : Character
+    public class Boss : Character
     {
         private Random _random = new Random();
 

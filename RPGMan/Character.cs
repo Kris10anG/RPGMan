@@ -39,8 +39,10 @@ namespace RPGMan
 
         public void LoseHealth(int atk)
         {
-            if (Health - atk <= 0)
+            Health -= atk;
+            if (Health <= 0)
             {
+                
                 IsAlive = false;
                 Console.WriteLine(Name + " Died because he has " + Health + " left" );
                 return;
